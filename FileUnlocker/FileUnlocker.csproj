@@ -15,6 +15,7 @@
         <UseSystemResourceKeys>true</UseSystemResourceKeys>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <OutputType>WinExe</OutputType>
+        <IlcInstructionSet>avx2</IlcInstructionSet>
     </PropertyGroup>
 
 </Project>
