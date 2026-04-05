@@ -78,13 +78,10 @@ internal static unsafe partial class Program
         }
         else if (Directory.Exists(path))
         {
-            // 将文件夹本身也放入（应对极少数 RM 能识别特定目录句柄的情况）
             filesToUnlock.Add(path);
 
             try
             {
-                // 【核心修复】：将文件夹内部的所有文件都提取出来交给重启管理器。
-                // 配合 .NET 现代的 EnumerationOptions，可以完美忽略掉没有访问权限的隐藏子文件夹，防止崩溃。
                 filesToUnlock.AddRange(Directory.GetFiles(path, "*", new EnumerationOptions
                 {
                     IgnoreInaccessible = true,
